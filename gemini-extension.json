@@ -1,0 +1,22 @@
+{
+  "name": "honkio",
+  "version": "1.5.0",
+  "description": "Send SMS, verify phones, buy Canadian numbers and check CASL consent from Gemini CLI, through HonkIO.",
+  "contextFileName": "GEMINI.md",
+  "settings": [
+    {
+      "name": "HonkIO API key",
+      "description": "Copy one from https://honkio.ca/dashboard/keys. Start with a test key (mk_test_...): every tool works and nothing is sent or charged.",
+      "envVar": "HONKIO_API_KEY",
+      "sensitive": true
+    }
+  ],
+  "mcpServers": {
+    "honkio": {
+      "command": "npx",
+      "args": ["-y", "@honkio/mcp"],
+      "env": { "HONKIO_API_KEY": "$HONKIO_API_KEY" },
+      "timeout": 30000
+    }
+  }
+}

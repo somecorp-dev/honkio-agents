@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "honkio": {
+      "type": "http",
+      "url": "https://mcp.honkio.ca/mcp",
+      "headers": { "Authorization": "Bearer ${HONKIO_API_KEY}" }
+    }
+  }
+}
