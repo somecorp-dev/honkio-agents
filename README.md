@@ -17,7 +17,7 @@ Gemini CLI prompts for your API key once and keeps it in the system keychain. Th
 /plugin install honkio@honkio
 ```
 
-Then export `HONKIO_API_KEY` in your shell. The plugin connects to the hosted endpoint at `https://mcp.honkio.ca/mcp` and adds a skill that walks Claude through a CASL-compliant send.
+Then run `/mcp` and pick `honkio` to sign in: a browser window opens on honkio.ca where you approve the connection and choose live or test mode. No key to paste. The plugin connects to the hosted endpoint at `https://mcp.honkio.ca/mcp` and adds a skill that walks Claude through a CASL-compliant send.
 
 ## Everything else
 

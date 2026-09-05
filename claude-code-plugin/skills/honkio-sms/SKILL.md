@@ -5,7 +5,7 @@ description: Send SMS, verify phones, and buy Canadian numbers through HonkIO wi
 
 # Sending SMS through HonkIO
 
-The `honkio` MCP server acts on the account whose API key is in `HONKIO_API_KEY`. Before the first call, run `whoami` and tell the user which account and mode the key is for.
+The `honkio` MCP server acts on the HonkIO account the user signed in with (or whose API key it was configured with). Before the first call, run `whoami` and tell the user which account and mode it is for.
 
 ## Test versus live
 
