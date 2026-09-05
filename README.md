@@ -5,7 +5,7 @@ Install HonkIO, the Canadian SMS API, into your agent of choice. Everything here
 ## Gemini CLI
 
 ```sh
-gemini extensions install https://github.com/jeffcaldwellca/honkio-agents
+gemini extensions install https://github.com/somecorp-dev/honkio-agents
 ```
 
 Gemini CLI prompts for your API key once and keeps it in the system keychain. The extension runs the `@honkio/mcp` package with `npx`, so Node.js 20 or newer must be on your machine (Gemini CLI itself needs it too).
@@ -13,7 +13,7 @@ Gemini CLI prompts for your API key once and keeps it in the system keychain. Th
 ## Claude Code
 
 ```sh
-/plugin marketplace add jeffcaldwellca/honkio-agents
+/plugin marketplace add somecorp-dev/honkio-agents
 /plugin install honkio@honkio
 ```
 
