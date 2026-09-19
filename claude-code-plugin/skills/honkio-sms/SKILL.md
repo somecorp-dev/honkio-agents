@@ -12,14 +12,14 @@ The `honkio` MCP server acts on the HonkIO account the user signed in with (or w
 - `mk_test_` keys simulate everything for free. Sends come back `DELIVERED`, but the `mode` field says `TEST` and no phone receives anything. Use them to explore.
 - `mk_live_` keys send real SMS and spend real money. Say so before the first live send in a session.
 
-## Before you send a commercial message
+## Before you send
 
-1. `check_consent` for the recipient. Commercial messages need CASL consent on record: express consent never expires, implied consent expires two years after the last transaction.
+1. `check_consent` for the recipient. Any commercial or transactional send_sms needs CASL consent on record: express consent never expires, implied consent expires two years after the last transaction.
 2. If consent is missing, do not pass `skip_consent_check`. Ask the user whether they hold consent outside HonkIO and, if so, `record_consent` with the source they name.
 3. If the number has opted out, stop. The recipient must text START or UNSTOP to come back; nothing you can call overrides that.
 4. Then `send_sms`. Pass an `idempotency_key` on any retry so a retry can never become a second send or a second charge.
 
-Transactional messages the recipient asked for (a verification code, an appointment reminder they requested) do not need commercial consent, but the opt-out rule still applies.
+This applies to every send_sms call, transactional or commercial: a live send with no consent record on file is refused with NO_CONSENT (skip_consent_check is rejected on a live key). The one send that genuinely needs no consent is an OTP through start_verification, which uses a separate path with no consent check at all. The opt-out rule applies regardless of what the message is for.
 
 ## Reading a refusal
 
