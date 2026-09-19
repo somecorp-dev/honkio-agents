@@ -6,7 +6,7 @@
   "settings": [
     {
       "name": "HonkIO API key",
-      "description": "Copy one from https://honkio.ca/dashboard/keys. Start with a test key (mk_test_...): every tool works and nothing is sent or charged.",
+      "description": "Copy one from https://honkio.ca/dashboard/keys. Start with a test key (mk_test_...): it works before your first top-up, and sends and verifications are simulated for free. Buying or releasing numbers, changing webhooks and running erasure need a live key.",
       "envVar": "HONKIO_API_KEY",
       "sensitive": true
     }
