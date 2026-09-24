@@ -21,7 +21,7 @@ Then run `/mcp` and pick `honkio` to sign in: a browser window opens on honkio.c
 
 ## Everything else
 
-Cursor, VS Code, the Claude Messages API, the OpenAI Responses API and any other MCP client: see https://honkio.ca/docs#mcp for one-click links and config snippets, or the package README at https://www.npmjs.com/package/@honkio/mcp.
+Cursor, VS Code, the Claude Messages API, the OpenAI Responses API and any other MCP client: see https://honkio.ca/docs/platform#mcp for one-click links and config snippets, or the package README at https://www.npmjs.com/package/@honkio/mcp.
 
 ## Layout
 
