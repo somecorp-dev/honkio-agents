@@ -42,7 +42,7 @@ The `from` address must be on a verified domain from `list_email_domains` (or `o
 ## Reading a refusal
 
 - `EMAIL_NO_CONSENT`: commercial with no consent on file; record it first, or send it as transactional if it truly is.
-- `EMAIL_SUPPRESSED`: the address bounced, complained or unsubscribed. Stop. Only `remove_email_suppression` if the user confirms the person asked to hear from them again.
+- `EMAIL_SUPPRESSED`: the address bounced, complained, was blocked by hand, or (on a commercial send) unsubscribed. Unsubscribes block commercial email only, so a transactional send to an unsubscribed address goes through. Stop. Only `remove_email_suppression` if the user confirms the person asked to hear from them again.
 - `EMAIL_OPT_OUT_BLOCKED`: the recipient unsubscribed from this sender. Stop.
 - `EMAIL_COMMERCIAL_MULTI_RECIPIENT`: a commercial email to several people; send one per recipient with `send_email_batch`.
 - `EMAIL_DOMAIN_NOT_VERIFIED`: the `from` domain is not verified here; see "Setting up a domain".
