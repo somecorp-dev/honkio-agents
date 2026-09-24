@@ -1,6 +1,6 @@
 # HonkIO for AI agents
 
-Install HonkIO, the Canadian SMS API, into your agent of choice. Everything here talks to the same API with your API key, which you get at https://honkio.ca/dashboard/keys. Start with a test key (`mk_test_...`): it works before your first top-up, and sends and verifications are simulated for free. Tools that buy or release numbers, change webhooks or run erasure need a live key.
+Install HonkIO, the Canadian SMS API, into your agent of choice. Everything here talks to the same API with your API key, which you create at https://honkio.ca/dashboard/keys (API Keys → Create key; the full key is shown once, right after you create it). Start with a test key (`mk_test_...`): it works before your first top-up, and sends and verifications are simulated for free. Tools that buy or release numbers, change webhooks or run erasure need a live key.
 
 ## Gemini CLI
 
