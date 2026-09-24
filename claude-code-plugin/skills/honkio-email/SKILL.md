@@ -48,7 +48,9 @@ The `from` address must be on a verified domain from `list_email_domains` (or `o
 - `EMAIL_DOMAIN_NOT_VERIFIED`: the `from` domain is not verified here; see "Setting up a domain".
 - `EMAIL_TEST_ADDRESS_LIVE_KEY`: a `test.honkio.ca` address on a live key; use a real recipient.
 - `EMAIL_TEMPLATE_VARIABLE_MISSING` or `EMAIL_TEMPLATE_NOT_PUBLISHED`: fix the variables, or ask the user to publish the template in the dashboard.
+- `EMAIL_DOMAIN_NOT_ALLOWED`: this API key is restricted to certain sending domains and the `from` address isn't on one of them; use a domain the key is allowed for.
 - `EMAIL_NOT_SCHEDULED`: the email already went out or was cancelled.
+- `EMAIL_IDEMPOTENCY_IN_PROGRESS`: a request with that `idempotency_key` is still being processed; wait and retry the same key rather than switching to a new one.
 
 Pass the same `idempotency_key` on any retry so a retry can never send or charge twice.
 
