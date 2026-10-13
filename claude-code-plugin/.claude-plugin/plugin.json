@@ -1,10 +1,14 @@
 {
   "name": "honkio",
-  "version": "1.6.1",
+  "displayName": "HonkIO",
+  "version": "1.6.2",
   "description": "Send SMS and email, verify phones, buy Canadian numbers and check CASL consent through HonkIO's hosted MCP endpoint, with skills for compliant SMS and email.",
   "author": { "name": "HonkIO", "url": "https://honkio.ca" },
   "homepage": "https://honkio.ca/docs/mcp",
+  "documentationUrl": "https://honkio.ca/docs/mcp",
+  "supportUrl": "https://honkio.ca/contact",
   "privacyPolicyUrl": "https://honkio.ca/legal/privacy",
+  "termsOfServiceUrl": "https://honkio.ca/legal/terms",
   "repository": "https://github.com/somecorp-dev/honkio-agents",
   "license": "MIT",
   "keywords": ["sms", "email", "canada", "casl", "phone verification", "otp", "mcp"]
