@@ -17,7 +17,7 @@ The `honkio` MCP server acts on the HonkIO account the user signed in with (or w
 1. `check_consent` for the recipient. Any commercial or transactional send_sms needs CASL consent on record: express consent never expires, implied consent expires two years after the last transaction.
 2. If consent is missing, do not pass `skip_consent_check`. Ask the user whether they hold consent outside HonkIO and, if so, `record_consent` with the source they name.
 3. If the number has opted out, stop. The recipient must text START or UNSTOP to come back; nothing you can call overrides that.
-4. Then `send_sms`. Pass an `idempotency_key` on any retry so a retry can never become a second send or a second charge.
+4. Then `send_sms`. Pass an `idempotency_key` on every send and reuse it on a retry, so a retry can never become a second send or a second charge.
 
 This applies to every send_sms call, transactional or commercial: a live send with no consent record on file is refused with NO_CONSENT (skip_consent_check is rejected on a live key). The one send that genuinely needs no consent is an OTP through start_verification, which uses a separate path with no consent check at all. The opt-out rule applies regardless of what the message is for.
 
