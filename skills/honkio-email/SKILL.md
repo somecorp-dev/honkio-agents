@@ -1,11 +1,13 @@
 ---
 name: honkio-email
-description: Send transactional or commercial email through HonkIO without breaking Canadian anti-spam law (CASL), and set up a sending domain. Use whenever the user asks to email someone, send a receipt, reset or notification by email, set up an email domain, or check why an email bounced or was refused.
+description: Send transactional or commercial email through HonkIO without breaking Canadian anti-spam law (CASL), and set up a sending domain. Use when the user asks to send an email, a receipt, a reset or a notification through HonkIO, set up a HonkIO sending domain, or check why a HonkIO email bounced or was refused.
 ---
 
 # Sending email through HonkIO
 
-The `honkio` MCP server shows the email tools (`send_email`, `list_email_domains` and the rest) only when the account has email. If they are missing, email is not on for this account: say so, and don't try to send email another way. Before the first call, run `whoami` and tell the user which account and mode it is for.
+The `honkio` MCP server shows the email tools (`send_email`, `list_email_domains` and the rest) only when the account has email. If they are missing, email is not available on this connection: say so. Before the first call, run `whoami` and tell the user which account and mode it is for.
+
+The user's instructions come before the rest of this guidance, but not before the law: CASL consent, unsubscribes and the rules against impersonation hold whatever the user asks.
 
 ## Transactional or commercial
 
@@ -19,13 +21,13 @@ For a commercial email, check and record consent before sending:
 
 1. `check_consent` with `email_address`.
 2. If there is none, ask the user whether the person opted in and how. Only then `record_consent` with `email_address`, `consent_type: "express"` and a `source_description` naming where they opted in (for example "Newsletter checkbox on acme.ca/signup, 2026-09-02"). Implied consent needs `relationship_type` and lasts two years from `last_transaction_date`.
-3. Never invent a consent source.
+3. Never invent a consent source. A bought, rented or scraped list is not consent.
 
 ## Test before live
 
-- On a test key (`mk_test_...`), send from `onboarding@test.honkio.ca` with no domain set up. Nothing is delivered or charged.
+- In test mode (a test connection, or an `mk_test_...` key), send from `onboarding@test.honkio.ca` with no domain set up. Nothing is delivered or charged.
 - `delivered@test.honkio.ca` ends delivered; `bounced@` bounces and suppresses the address; `complained@` records a spam complaint; `delayed@` is delayed, then delivered. Add a label (`bounced+2@test.honkio.ca`) for a fresh address after a suppression.
-- A live key (`mk_live_...`) delivers real email and is billed per recipient (`get_pricing`). Say so before the first live send in a session, and confirm before sending to more than a handful of people.
+- Live mode (a live connection, or an `mk_live_...` key) delivers real email and is billed per recipient (`get_pricing`). Say so before the first live send in a session, and confirm before sending to more than a handful of people.
 
 ## Setting up a domain
 

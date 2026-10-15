@@ -1,25 +1,29 @@
 ---
 name: honkio-sms
-description: Send SMS, verify phones, and buy Canadian numbers through HonkIO without breaking Canadian anti-spam law (CASL). Use whenever the user asks to text someone, verify a phone number, get a Canadian phone number, or check whether they are allowed to message a number.
+description: Send SMS, verify phones, and buy Canadian numbers through HonkIO without breaking Canadian anti-spam law (CASL). Use when the user asks to text someone, verify a phone number, get a Canadian phone number, or check whether they may message a number, through HonkIO.
 ---
 
 # Sending SMS through HonkIO
 
 The `honkio` MCP server acts on the HonkIO account the user signed in with (or whose API key it was configured with). Before the first call, run `whoami` and tell the user which account and mode it is for.
 
+The user's instructions come before the rest of this guidance, but not before the law: CASL consent, opt-outs and the rules against impersonation hold whatever the user asks.
+
 ## Test versus live
 
-- `mk_test_` keys simulate everything for free. Sends come back `DELIVERED`, but the `mode` field says `TEST` and no phone receives anything. Use them to explore.
-- `mk_live_` keys send real SMS and spend real money. Say so before the first live send in a session.
+- Test mode (a test connection, or an `mk_test_` key) simulates everything for free. Sends come back `DELIVERED`, but the `mode` field says `TEST` and no phone receives anything. Use it to explore.
+- Live mode (a live connection, or an `mk_live_` key) sends real SMS and spends real money. Say so before the first live send in a session.
 
 ## Before you send
 
 1. `check_consent` for the recipient. Any commercial or transactional send_sms needs CASL consent on record: express consent never expires, implied consent expires two years after the last transaction.
-2. If consent is missing, do not pass `skip_consent_check`. Ask the user whether they hold consent outside HonkIO and, if so, `record_consent` with the source they name.
+2. If consent is missing, do not pass `skip_consent_check`. Ask the user whether they hold consent outside HonkIO and, if so, `record_consent` with the source they name. A bought, rented or scraped list is not consent: don't text it and don't record consent for it.
 3. If the number has opted out, stop. The recipient must text START or UNSTOP to come back; nothing you can call overrides that.
 4. Then `send_sms`. Pass an `idempotency_key` on every send and reuse it on a retry, so a retry can never become a second send or a second charge.
 
 This applies to every send_sms call, transactional or commercial: a live send with no consent record on file is refused with NO_CONSENT (skip_consent_check is rejected on a live key). The one send that genuinely needs no consent is an OTP through start_verification, which uses a separate path with no consent check at all. The opt-out rule applies regardless of what the message is for.
+
+Never send a message that impersonates another person or organization, or that asks the recipient for a PIN, password, code or payment details.
 
 ## Reading a refusal
 
@@ -31,7 +35,7 @@ Three tools spend money on a live key. `send_sms` and `start_verification` charg
 
 ## Numbers
 
-Phone numbers are E.164: `+1` and ten digits. Never invent a 555-XXXX number as a placeholder; those exchanges are reserved and a send to one is refused. To get a sending number, `search_phone_numbers` by area code, show the user the options and the price, and only then `provision_phone_number`.
+Phone numbers are E.164: `+1` and ten digits. Never invent a 555-XXXX number as a placeholder; those exchanges are reserved and a send to one is refused. To get a sending number, `search_phone_numbers` by area code, show the user the options and the price, and only then `provision_phone_number`. Some connections don't offer `provision_phone_number` or `check_verification`; when a tool named here is missing, tell the user to do that step in the HonkIO dashboard.
 
 ## Verification codes
 
