@@ -1,6 +1,6 @@
 {
   "name": "honkio",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "description": "Send SMS and email, verify phones, buy Canadian numbers and check CASL consent from Gemini CLI, through HonkIO.",
   "contextFileName": "GEMINI.md",
   "settings": [
