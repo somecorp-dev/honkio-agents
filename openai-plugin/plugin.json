@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "honkio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Send SMS and email, send verification codes, search Canadian numbers and check CASL consent through HonkIO's hosted MCP endpoint, with skills for compliant SMS and email.",
   "author": {
     "name": "somethingcorporate",
