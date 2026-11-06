@@ -4,7 +4,7 @@ Send SMS and email in Canada from Claude: text customers, send receipts and noti
 
 ## What it adds
 
-- **The HonkIO MCP server**, connected to HonkIO's hosted endpoint at `https://mcp.honkio.ca/mcp`. It has tools for SMS, email, phone verification, phone numbers, CASL consent and opt-outs, webhooks, and account usage and pricing.
+- **The HonkIO MCP server**, connected to HonkIO's hosted endpoint at `https://mcp.honkio.ca/mcp`. It has tools for SMS, email, push notifications and Notify (one notification that tries push, then SMS, then email), phone verification, phone numbers, CASL consent and opt-outs, webhooks, and account usage and pricing.
 - **Two skills**, `honkio-sms` and `honkio-email`, that guide Claude through sending compliantly: when consent is needed, how test mode differs from live, and what each refusal means.
 
 The plugin runs nothing on your machine: no hooks, no scripts and no local server.

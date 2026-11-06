@@ -23,4 +23,13 @@ The email tools (`send_email`, `send_email_batch`, `list_email_domains` and the 
 - A live key needs a verified sending domain. Use one from `list_email_domains`; never guess a `from` domain. To add one, `add_email_domain`, show the user the DNS records, then `verify_email_domain`.
 - `EMAIL_SUPPRESSED` and `EMAIL_OPT_OUT_BLOCKED` mean stop; `EMAIL_NO_CONSENT` means record consent first; `EMAIL_DOMAIN_NOT_VERIFIED` means the `from` domain is not set up.
 
+## Push and Notify
+
+The push tools (`send_push`, `get_push`, `list_pushes`, `cancel_push`, `reschedule_push`, `list_push_devices`, `list_push_apps`) appear only when push notifications are on for the account, and the Notify tools (`notify`, `get_notification`, `list_notifications`, `get_recipient`, `upsert_recipient`) only when Notify is on as well.
+
+- `send_push` targets one user's devices (`to.user_id`) or one device (`to.device_id`) of a push app from `list_push_apps`. On a test key it goes through a stub and costs nothing; on a live key each accepted device delivery is charged past a monthly free allotment. Add a `fallback.sms` only when the user wants a text if no device accepts the push: it needs consent on file and a sending number like any SMS.
+- Push apps, their APNs and FCM credentials, web push keys and payload encryption are set up in the dashboard. Never ask the user to paste a key or service account into the chat.
+- `notify` sends one notification to one `user_id` and tries push, then SMS, then email until one delivers; only the channel that delivers is billed. It goes to the person's recipient profile (`get_recipient`, `upsert_recipient`): never invent a phone number or email address, and ask the user before writing or replacing one. A contact in a profile is not consent; SMS and email keep every consent, opt-out and sending-limit rule.
+- Pass an `idempotency_key` on every `send_push` and `notify`.
+
 Full tool reference: https://www.npmjs.com/package/@honkio/mcp
