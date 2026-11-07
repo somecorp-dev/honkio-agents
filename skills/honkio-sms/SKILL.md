@@ -16,7 +16,7 @@ The user's instructions come before the rest of this guidance, but not before th
 
 ## Before you send
 
-1. `check_consent` for the recipient. Any commercial or transactional send_sms needs CASL consent on record: express consent never expires, implied consent expires two years after the last transaction.
+1. `check_consent` for the recipient. Any commercial or transactional send_sms needs CASL consent on record: express consent never expires, implied consent expires two years after a purchase, contract, donation, volunteer work or membership, and six months after an inquiry, an application or any other relationship type.
 2. If consent is missing, do not pass `skip_consent_check`. Ask the user whether they hold consent outside HonkIO and, if so, `record_consent` with the source they name. A bought, rented or scraped list is not consent: don't text it and don't record consent for it.
 3. If the number has opted out, stop. The recipient must text START or UNSTOP to come back; nothing you can call overrides that.
 4. Then `send_sms`. Pass an `idempotency_key` on every send and reuse it on a retry, so a retry can never become a second send or a second charge.
