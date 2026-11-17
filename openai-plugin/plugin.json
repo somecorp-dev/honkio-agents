@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "honkio",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Send SMS and email, send verification codes, search Canadian numbers and check CASL consent through HonkIO's hosted MCP endpoint, with skills for compliant SMS and email.",
   "author": {
     "name": "somethingcorporate",
@@ -24,7 +24,7 @@
       "interface": {
         "displayName": "HonkIO",
         "shortDescription": "Canadian SMS and email",
-        "longDescription": "HonkIO is a Canadian SMS and email API. Once you sign in with your HonkIO account, you can send SMS, send one-time verification codes, search Canadian phone numbers, record and check CASL consent, review message history and delivery status, manage webhooks, and send email from a verified sending domain.\n\nWhen you connect, you choose test or live mode. In test mode, sends and verification codes are simulated: nothing reaches a phone or inbox and nothing is charged. Live mode sends real messages and charges your prepaid HonkIO balance.\n\nIntended for developers and businesses that message people in Canada. Every SMS needs CASL consent on file for the recipient, except a verification code. A bought or rented list is not consent. Recipients who opted out stay blocked. Phone numbers are Canadian only. Buying a number happens in the HonkIO dashboard, not here. Releasing numbers and changing webhooks need a live connection.",
+        "longDescription": "HonkIO is a Canadian SMS and email API. Once you sign in with your HonkIO account, you can send SMS, send one-time verification codes, search Canadian phone numbers, record and check CASL consent, review message history and delivery status, manage webhooks, and send email from a verified sending domain.\n\nWhen you connect, you choose test or live mode. In test mode, sends and verification codes are simulated: nothing reaches a phone or inbox. Live mode sends real messages.\n\nIntended for developers and businesses that message people in Canada. Every SMS needs CASL consent on file for the recipient, except a verification code. A bought or rented list is not consent. Recipients who opted out stay blocked. Phone numbers are Canadian only. Buying a number happens in the HonkIO dashboard, not here. Releasing numbers and changing webhooks need a live connection.",
         "developerName": "somethingcorporate",
         "category": "Developer Tools",
         "capabilities": [
@@ -41,7 +41,7 @@
         "termsOfServiceURL": "https://honkio.ca/legal/terms",
         "defaultPrompt": [
           "Which HonkIO account am I connected to, and is it test or live?",
-          "Find Canadian phone numbers in area code 416 and tell me the monthly price.",
+          "Find available Canadian phone numbers in area code 416.",
           "Show my last five messages and whether they were delivered."
         ],
         "brandColor": "#C80D0D",
