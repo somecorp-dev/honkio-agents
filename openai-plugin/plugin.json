@@ -67,7 +67,7 @@
               "description": "Send a verification code",
               "prompt": "Send a 6-digit verification code to +14376660123 from +14376660100.",
               "tools_triggered": "start_verification",
-              "expected_behavior": "Starts a verification and reports its ID, the pending status and when it expires. In test mode no SMS is sent and the code is not shown."
+              "expected_behavior": "Starts a verification and reports its ID, the pending status and when it expires. In test mode no SMS is sent and nothing is charged. The code is not shown: this connection never returns a verification code."
             },
             {
               "description": "Find numbers and their price without buying",

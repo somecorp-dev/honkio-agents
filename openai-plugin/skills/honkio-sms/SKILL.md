@@ -31,7 +31,7 @@ A refused send returns an error code that says what to fix. `NO_CONSENT` and `CO
 
 ## Money
 
-Three tools spend money on a live key. `send_sms` and `start_verification` charge per SMS segment, and `provision_phone_number` charges the first month plus a one-time activation fee, then monthly rent until `release_phone_number`. Call `get_pricing` for current figures and confirm with the user before buying a number or sending to more than a handful of recipients. A body over 10 segments is refused before anything is charged; long messages cost more, so keep them short.
+Three tools spend money on a live key. `send_sms` and `start_verification` charge per SMS segment, and `provision_phone_number` charges the first month plus a one-time activation fee, then monthly rent until `release_phone_number`. Call `get_pricing` for current figures and confirm with the user before buying a number or sending to more than a handful of recipients. Confirm before `record_consent` too (consent is what lets a send reach someone) and before `create_webhook` (name the URL and the events: every subscribed event goes there). A body over 10 segments is refused before anything is charged; long messages cost more, so keep them short.
 
 ## Numbers
 
@@ -39,4 +39,4 @@ Phone numbers are E.164: `+1` and ten digits. Never invent a 555-XXXX number as 
 
 ## Verification codes
 
-`start_verification` texts a one-time code; `check_verification` submits what the user received. On a test key the code is always `000000` padded to the requested length.
+`start_verification` texts a one-time code; `check_verification` submits what the user received. On a test key the code is always `000000` padded to the requested length; an API-key connection returns it as `test_code`, and an OAuth connection never returns a code.
