@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "honkio",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Send SMS and email, send verification codes, search Canadian numbers and check CASL consent through HonkIO's hosted MCP endpoint, with skills for compliant SMS and email.",
   "author": {
     "name": "somethingcorporate",
@@ -41,7 +41,7 @@
         "termsOfServiceURL": "https://honkio.ca/legal/terms",
         "defaultPrompt": [
           "Which HonkIO account am I connected to, and is it test or live?",
-          "Find available Canadian phone numbers in area code 416.",
+          "Find available Toronto phone numbers in area codes 416, 437 or 647.",
           "Show my last five messages and whether they were delivered."
         ],
         "brandColor": "#C80D0D",
@@ -71,9 +71,9 @@
             },
             {
               "description": "Find numbers and their price without buying",
-              "prompt": "Find available Canadian phone numbers in area code 416 and tell me what one costs per month. Don't buy anything.",
+              "prompt": "Find available Toronto phone numbers in area codes 416, 437 or 647 and tell me what one costs per month. Don't buy anything.",
               "tools_triggered": "search_phone_numbers, get_pricing",
-              "expected_behavior": "Lists available 416 numbers with the monthly price and activation fee, and does not buy a number."
+              "expected_behavior": "Lists available numbers in at least one of the three Toronto area codes (inventory varies; 416 is sometimes empty) with the monthly price and activation fee, and does not buy a number."
             },
             {
               "description": "Review recent messages",
